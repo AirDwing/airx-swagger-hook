@@ -1,0 +1,8 @@
+{
+  "name": "@airx/swagger-hook",
+  "version": "1.0.0",
+  "main": "hooks.js",
+  "repository": "git@github.com:AirDwing/airx-swagger-hook.git",
+  "author": "willin <willin@willin.org>",
+  "license": "Apache 2.0"
+}
