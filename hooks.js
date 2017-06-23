@@ -44,9 +44,20 @@
       var SecretKey = authcode.decode(localStorage.getItem('SecretKey') || '', 'willin');
       checkNode[0].innerHTML += '<div class="secretForm"><p><label for="SecretId">SecretId</label> <input type="text" id="SecretId" placeholder="SecretId" value="' + SecretId + '"></p><p><label for="SecretKey">SecretKey</label> <input type="password" id="SecretKey" placeholder="SecretKey" value="' + SecretKey + '"></p><p><button class="btn secretShow">显示/隐藏SecretKey</button> <button class="btn secretSave">保存</button></p></div>';
     }
+    // HTTP/HTTPS 选择
     var schemes = document.getElementsByClassName('schemes');
     if (schemes.length > 0) {
-      setValue(schemes[0].querySelector('select'), location.protocol.replace(':', ''));
+      var schemeSelect = schemes[0].querySelector('select');
+      schemeSelect.value = location.protocol.replace(':', '');
+      if (document.createEventObject) {
+        var evt = document.createEventObject();
+        schemeSelect.fireEvent('onchange', evt)
+      }
+      else {
+        var evt = document.createEvent("HTMLEvents");
+        evt.initEvent('change', true, true);
+        schemeSelect.dispatchEvent(evt);
+      }
     }
   });
 
