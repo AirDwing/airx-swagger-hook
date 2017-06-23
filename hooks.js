@@ -46,7 +46,7 @@
     }
     var schemes = document.getElementsByClassName('schemes');
     if (schemes.length > 0) {
-      schemes[0].querySelector('select').value = location.protocol.replace(':', '');
+      setValue(schemes[0].querySelector('select'), location.protocol.replace(':', ''));
     }
   });
 
