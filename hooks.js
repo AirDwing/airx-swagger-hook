@@ -59,7 +59,7 @@
     var params = {};
     for (var i = 0; i < items.length; i++) {
       var key = items[i].parentNode.previousSibling.childNodes[0].innerText;
-      if (key) { key = key.replace(' *', ''); }
+      if (key) { key = key.replace(/\s\*/, ''); }
       var value = items[i].value;
       if (value === 'HmacSHA256') {
         signMethod = value;
@@ -125,7 +125,7 @@
             // 插入加密按钮
             for (var i = 0; i < items.length; i += 1) {
               var key = items[i].parentNode.previousSibling.childNodes[0].innerText;
-              if (key) { key = key.replace(' *', ''); }
+              if (key) { key = key.replace(/\s\*/, ''); }
               if (key === 'password' && items[i].nextSibling === null) {
                 items[i].insertAdjacentHTML('afterend', '<button class="btn authcode">加密</button>');
               }
