@@ -100,7 +100,7 @@
       for (var i = 0; i < items.length; i++) {
       var item = items[i];
       var placeholder = item.placeholder || '';
-      if (/Timestamp|Nonce|SecretId|Signature|key/.test(placeholder) && !item.hasAttribute('readonly')) {
+      if (/^(Timestamp|Nonce|SecretId|Signature|key)/.test(placeholder) && !item.hasAttribute('readonly')) {
         item.setAttribute('readonly', true);
       }
       if (/Timestamp/.test(placeholder)) {
