@@ -174,27 +174,14 @@
     }
   });
 
-  function debounce(func, wait = 200, immediate = true) {
-    var timeout;
-    return function() {
-      var context = this, args = arguments;
-      var later = function() {
-        timeout = null;
-        if (!immediate) func.apply(context, args);
-      };
-      var callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) func.apply(context, args);
-    };
-  };
-
   function keyup(e) {
     if (e.target.parentNode.nodeName === 'TD') {
+      body.removeEventListener('keyup', keyup);
       var form = e.target.parentNode.parentNode.parentNode;
       fillIn(getList(form));
+      body.addEventListener('keyup', keyup);
     }
   }
   // 侦听键盘操作
-  body.addEventListener('keyup', debounce(keyup));
+  body.addEventListener('keyup', keyup);
 })();
